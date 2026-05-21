@@ -18,15 +18,15 @@ export default function Footer() {
 
   return (
     <footer
-      className="border-t"
-      style={{ background: "#020203", borderColor: "rgba(255,255,255,0.08)", padding: "64px 32px" }}
+      className="border-t px-4 sm:px-8 py-10 md:py-16"
+      style={{ background: "#020203", borderColor: "rgba(255,255,255,0.08)" }}
     >
-      <div className="flex flex-col md:flex-row justify-between items-center gap-12 max-w-7xl mx-auto w-full">
+      <div className="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-12 max-w-7xl mx-auto w-full">
         {/* Left — name + subtitle */}
         <div className="flex flex-col items-center md:items-start">
           <span
             className="text-[#e5e2e3] mb-2"
-            style={{ fontSize: "clamp(1.5rem,3vw,48px)", fontWeight: 600, letterSpacing: "-0.02em", lineHeight: 1.2 }}
+            style={{ fontSize: "clamp(1.3rem,4vw,48px)", fontWeight: 600, letterSpacing: "-0.02em", lineHeight: 1.2 }}
           >
             Duong Nhut Tan
           </span>

@@ -56,7 +56,7 @@ function TiltCard({ cat }: { cat: (typeof CATEGORIES)[0] }) {
   return (
     <div
       ref={ref}
-      className="tilt-card glass-card p-8 rounded-2xl transition-all duration-200"
+      className="tilt-card glass-card p-5 sm:p-6 md:p-8 rounded-2xl transition-all duration-200"
       onMouseMove={handleTilt}
       onMouseLeave={resetTilt}
     >
@@ -89,16 +89,16 @@ function TiltCard({ cat }: { cat: (typeof CATEGORIES)[0] }) {
 
 export default function TechStack() {
   return (
-    <section id="stack" className="py-[160px] bg-[#0e0e0f]/50">
-      <div className="container mx-auto px-6">
+    <section id="stack" className="py-16 md:py-24 lg:py-[160px] bg-[#0e0e0f]/50">
+      <div className="container mx-auto px-4 sm:px-6">
         {/* Title */}
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewportSettings}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center text-[#e5e2e3] mb-20"
-          style={{ fontSize: "clamp(2rem,5vw,48px)", fontWeight: 600, letterSpacing: "-0.02em" }}
+          className="text-center text-[#e5e2e3] mb-10 md:mb-16 lg:mb-20"
+          style={{ fontSize: "clamp(1.5rem,5vw,48px)", fontWeight: 600, letterSpacing: "-0.02em" }}
         >
           Production-Ready Stack
         </motion.h2>

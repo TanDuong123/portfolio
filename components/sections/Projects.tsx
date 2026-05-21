@@ -145,27 +145,27 @@ const PROJECTS = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-[160px] overflow-hidden">
-      <div className="container mx-auto px-6">
+    <section id="projects" className="py-16 md:py-24 lg:py-[160px] overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6">
         {/* Header */}
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={viewportSettings}
-          className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8"
+          className="flex flex-col md:flex-row justify-between items-end mb-10 md:mb-16 lg:mb-20 gap-6 md:gap-8"
         >
           <div className="max-w-2xl">
             <motion.h2
               variants={fadeUp}
-              className="text-[#e5e2e3] leading-tight mb-6"
-              style={{ fontSize: "clamp(2rem,5vw,48px)", fontWeight: 600, letterSpacing: "-0.02em" }}
+              className="text-[#e5e2e3] leading-tight mb-4 md:mb-6"
+              style={{ fontSize: "clamp(1.5rem,5vw,48px)", fontWeight: 600, letterSpacing: "-0.02em" }}
             >
               SOLVING BUSINESS
               <br />
               PUZZLES THROUGH CODE
             </motion.h2>
-            <motion.p variants={fadeUp} className="text-[#c1c6d7]" style={{ fontSize: "18px", lineHeight: 1.6 }}>
+            <motion.p variants={fadeUp} className="text-[#c1c6d7]" style={{ fontSize: "clamp(15px,3vw,18px)", lineHeight: 1.6 }}>
               Focusing on high-availability systems that transform internal operations
               from chaotic spreadsheets to streamlined digital workflows.
             </motion.p>
@@ -196,7 +196,7 @@ export default function Projects() {
               className={`group relative glass-card rounded-3xl overflow-hidden ${p.offset ? "lg:mt-20" : ""}`}
             >
               {/* Image / Mockup */}
-              <div className="h-[400px] overflow-hidden relative">
+              <div className="h-[240px] sm:h-[320px] md:h-[400px] overflow-hidden relative">
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#020203] via-transparent to-transparent z-10 pointer-events-none" />
 
@@ -226,10 +226,10 @@ export default function Projects() {
               </div>
 
               {/* Content */}
-              <div className="p-8">
+              <div className="p-5 sm:p-6 md:p-8">
                 <h3
                   className="text-[#e5e2e3] mb-1"
-                  style={{ fontSize: "24px", fontWeight: 600 }}
+                  style={{ fontSize: "clamp(1.1rem, 3vw, 24px)", fontWeight: 600 }}
                 >
                   {p.title}
                 </h3>

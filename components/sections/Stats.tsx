@@ -39,27 +39,27 @@ function Counter({ target, suffix, color }: { target: number; suffix: string; co
 
 export default function Stats() {
   return (
-    <section id="about" className="py-[160px] bg-[#020203] relative overflow-hidden">
-      <div className="container mx-auto px-6">
+    <section id="about" className="py-16 md:py-24 lg:py-[160px] bg-[#020203] relative overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6">
         {/* Header */}
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={viewportSettings}
-          className="max-w-4xl mx-auto text-center mb-20"
+          className="max-w-4xl mx-auto text-center mb-10 md:mb-16 lg:mb-20"
         >
           <motion.h2
             variants={fadeUp}
-            className="mb-6 text-[#e5e2e3]"
-            style={{ fontSize: "48px", fontWeight: 600, letterSpacing: "-0.02em", lineHeight: 1.2 }}
+            className="mb-4 md:mb-6 text-[#e5e2e3]"
+            style={{ fontSize: "clamp(1.8rem, 6vw, 48px)", fontWeight: 600, letterSpacing: "-0.02em", lineHeight: 1.2 }}
           >
             Built for Reliability
           </motion.h2>
           <motion.p
             variants={fadeUp}
             className="text-[#c1c6d7]"
-            style={{ fontSize: "18px", lineHeight: 1.6 }}
+            style={{ fontSize: "clamp(15px, 3vw, 18px)", lineHeight: 1.6 }}
           >
             Over two years of engineering complex business logic and scalable database
             architectures for rapidly growing Vietnamese enterprises.
@@ -72,13 +72,13 @@ export default function Stats() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportSettings}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8"
         >
           {STATS.map((s, i) => (
             <motion.div
               key={i}
               variants={fadeUp}
-              className="glass-card p-10 rounded-2xl text-center group"
+              className="glass-card p-6 md:p-10 rounded-2xl text-center group"
             >
               {/* Number */}
               <div

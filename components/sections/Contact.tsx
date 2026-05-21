@@ -6,15 +6,15 @@ import { staggerContainer, fadeUp, viewportSettings } from "@/lib/animations";
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-[160px]">
-      <div className="container mx-auto px-6">
+    <section id="contact" className="py-16 md:py-24 lg:py-[160px]">
+      <div className="container mx-auto px-4 sm:px-6">
         {/* Big glass card */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewportSettings}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="glass-card rounded-[40px] p-12 md:p-20 relative overflow-hidden text-center"
+          className="glass-card rounded-[24px] md:rounded-[40px] p-8 sm:p-12 md:p-20 relative overflow-hidden text-center"
         >
           {/* Top-right glow */}
           <div
@@ -31,8 +31,8 @@ export default function Contact() {
             {/* Heading */}
             <motion.h2
               variants={fadeUp}
-              className="relative z-10 mb-8 text-[#e5e2e3]"
-              style={{ fontSize: "clamp(2rem,6vw,56px)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.1 }}
+              className="relative z-10 mb-5 md:mb-8 text-[#e5e2e3]"
+              style={{ fontSize: "clamp(1.6rem,6vw,56px)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.1 }}
             >
               Let&apos;s build something
               <br />
@@ -42,8 +42,8 @@ export default function Contact() {
             {/* Subtext */}
             <motion.p
               variants={fadeUp}
-              className="relative z-10 text-[#c1c6d7] max-w-2xl mx-auto mb-12"
-              style={{ fontSize: "18px", lineHeight: 1.6 }}
+              className="relative z-10 text-[#c1c6d7] max-w-2xl mx-auto mb-8 md:mb-12"
+              style={{ fontSize: "clamp(15px,3vw,18px)", lineHeight: 1.6 }}
             >
               Looking for a technical partner to help build or scale your next
               enterprise platform? I&apos;m currently open to new collaborations.
@@ -56,7 +56,7 @@ export default function Contact() {
             >
               <motion.a
                 href="mailto:tanduong969@gmail.com"
-                className="w-full sm:w-auto px-10 py-5 rounded-full font-bold tracking-widest uppercase text-[#020203] transition-colors duration-300 flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-7 sm:px-10 py-4 sm:py-5 rounded-full font-bold tracking-widest uppercase text-[#020203] transition-colors duration-300 flex items-center justify-center gap-2"
                 style={{
                   background: "#ffffff",
                   fontFamily: "'JetBrains Mono', monospace",

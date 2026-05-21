@@ -6,8 +6,8 @@ import { viewportSettings } from "@/lib/animations";
 
 export default function Education() {
   return (
-    <section id="education" className="py-20">
-      <div className="container mx-auto px-6">
+    <section id="education" className="py-16 md:py-20">
+      <div className="container mx-auto px-4 sm:px-6">
 
         {/* Title row — same style as Experience */}
         <motion.div
@@ -20,7 +20,7 @@ export default function Education() {
           <div className="h-px flex-1 bg-[rgba(255,255,255,0.08)]" />
           <h2
             className="shrink-0 uppercase tracking-tighter text-[#e5e2e3]"
-            style={{ fontSize: "clamp(1.5rem,3vw,32px)", fontWeight: 600, letterSpacing: "-0.02em" }}
+            style={{ fontSize: "clamp(1.3rem,4vw,32px)", fontWeight: 600, letterSpacing: "-0.02em" }}
           >
             Education
           </h2>
@@ -35,7 +35,7 @@ export default function Education() {
           transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           className="max-w-4xl mx-auto"
         >
-          <div className="glass-card rounded-2xl p-8 flex flex-col sm:flex-row sm:items-center gap-6">
+          <div className="glass-card rounded-2xl p-5 sm:p-6 md:p-8 flex flex-col sm:flex-row sm:items-center gap-5 md:gap-6">
 
             {/* Icon */}
             <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-[#00DFD8]/10 border border-[#00DFD8]/20 flex items-center justify-center">
