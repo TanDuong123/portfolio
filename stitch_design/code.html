@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Duong Nhut Tan | Fullstack Developer Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "primary": "#aec6ff",
+                "on-tertiary-fixed-variant": "#8f0045",
+                "on-primary-fixed": "#001a43",
+                "surface-dim": "#131314",
+                "primary-fixed": "#d8e2ff",
+                "inverse-on-surface": "#313031",
+                "surface-container": "#201f20",
+                "secondary-container": "#6807ba",
+                "on-primary-fixed-variant": "#004397",
+                "primary-fixed-dim": "#aec6ff",
+                "on-secondary-fixed": "#2b0052",
+                "electric-blue": "#00DFD8",
+                "inverse-surface": "#e5e2e3",
+                "surface-container-high": "#2a2a2b",
+                "surface-container-lowest": "#0e0e0f",
+                "surface-bright": "#3a393a",
+                "on-background": "#e5e2e3",
+                "error": "#ffb4ab",
+                "secondary-fixed": "#efdbff",
+                "primary-container": "#0070f3",
+                "on-surface-variant": "#c1c6d7",
+                "on-tertiary-fixed": "#3f001b",
+                "bg-obsidian": "#020203",
+                "error-container": "#93000a",
+                "tertiary-container": "#e60073",
+                "secondary": "#dbb8ff",
+                "on-tertiary": "#65002f",
+                "on-primary": "#002e6b",
+                "background": "#131314",
+                "outline": "#8b90a0",
+                "on-secondary-container": "#d0a6ff",
+                "surface-container-low": "#1c1b1c",
+                "surface-tint": "#aec6ff",
+                "surface-glass": "rgba(10, 10, 11, 0.7)",
+                "surface": "#131314",
+                "on-primary-container": "#ffffff",
+                "on-tertiary-container": "#ffffff",
+                "on-surface": "#e5e2e3",
+                "border-muted": "rgba(255, 255, 255, 0.08)",
+                "surface-container-highest": "#353436",
+                "outline-variant": "#414754",
+                "surface-variant": "#353436",
+                "on-error": "#690005",
+                "tertiary": "#ffb1c5",
+                "on-secondary": "#470083",
+                "on-secondary-fixed-variant": "#6600b7",
+                "tertiary-fixed-dim": "#ffb1c5",
+                "tertiary-fixed": "#ffd9e1",
+                "inverse-primary": "#0059c5",
+                "secondary-fixed-dim": "#dbb8ff",
+                "on-error-container": "#ffdad6",
+                "hyper-purple": "#BD00FF"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "section-gap-mobile": "80px",
+                "stack-sm": "12px",
+                "stack-lg": "48px",
+                "gutter": "32px",
+                "stack-md": "24px",
+                "section-gap-desktop": "160px",
+                "container-max": "1200px",
+                "margin-mobile": "20px"
+            },
+            "fontFamily": {
+                "headline-md": ["Inter"],
+                "body-lg": ["Inter"],
+                "display-xl-mobile": ["Inter"],
+                "display-xl": ["Inter"],
+                "body-md": ["Inter"],
+                "headline-lg": ["Inter"],
+                "label-mono": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "display-xl-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "display-xl": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "headline-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                "label-mono": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #020203;
+            color: #e5e2e3;
+            scroll-behavior: smooth;
+            cursor: default;
+        }
+
+        .cursor-glow {
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(0, 223, 216, 0.05) 0%, rgba(189, 0, 255, 0.03) 40%, transparent 70%);
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease-out;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(0, 223, 216, 0.3);
+            box-shadow: 0 0 40px rgba(0, 223, 216, 0.1);
+        }
+
+        .animated-grid {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        .typing-container::after {
+            content: '|';
+            animation: blink 0.8s infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        .timeline-line {
+            background: linear-gradient(to bottom, transparent, #00DFD8, #BD00FF, transparent);
+        }
+
+        .tilt-card {
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .hero-glow {
+            filter: blur(120px);
+            opacity: 0.15;
+        }
+    </style>
+</head>
+<body class="selection:bg-electric-blue selection:text-bg-obsidian">
+<div class="cursor-glow" id="cursor-glow"></div>
+<!-- TopNavBar -->
+<nav class="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl rounded-full border border-border-muted bg-surface-glass backdrop-blur-md flex justify-between items-center px-8 py-3 z-50 shadow-2xl shadow-electric-blue/5" id="top-nav">
+<div class="flex items-center gap-2">
+<span class="text-headline-md font-headline-md tracking-tighter text-on-surface">Duong Nhut Tan</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-label-mono text-label-mono uppercase tracking-widest text-on-surface-variant hover:text-on-surface transition-colors duration-300" href="#projects">Projects</a>
+<a class="font-label-mono text-label-mono uppercase tracking-widest text-on-surface-variant hover:text-on-surface transition-colors duration-300" href="#experience">Experience</a>
+<a class="font-label-mono text-label-mono uppercase tracking-widest text-on-surface-variant hover:text-on-surface transition-colors duration-300" href="#stack">Stack</a>
+<a class="font-label-mono text-label-mono uppercase tracking-widest text-on-surface-variant hover:text-on-surface transition-colors duration-300" href="#contact">Contact</a>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex gap-2">
+<span class="material-symbols-outlined text-outline-variant hover:text-electric-blue cursor-pointer transition-colors duration-300">code</span>
+<span class="material-symbols-outlined text-outline-variant hover:text-electric-blue cursor-pointer transition-colors duration-300">terminal</span>
+</div>
+<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-full font-label-mono text-label-mono uppercase tracking-widest hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg shadow-primary-container/20">Download CV</button>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+<div class="absolute inset-0 animated-grid pointer-events-none opacity-20"></div>
+<div class="absolute top-1/4 -left-20 w-96 h-96 bg-electric-blue hero-glow rounded-full"></div>
+<div class="absolute bottom-1/4 -right-20 w-96 h-96 bg-hyper-purple hero-glow rounded-full"></div>
+<div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center z-10">
+<!-- Left Side: Content -->
+<div class="space-y-8">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-electric-blue/20 bg-electric-blue/5">
+<span class="w-2 h-2 rounded-full bg-electric-blue animate-pulse"></span>
+<span class="font-label-mono text-xs uppercase tracking-widest text-electric-blue">Available for Enterprise Projects</span>
+</div>
+<h1 class="font-display-xl text-display-xl lg:text-display-xl text-on-surface leading-none">
+                    ENGINEERING <br/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-hyper-purple">SYSTEMS</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                    Fullstack Developer specializing in architecting mission-critical ERP solutions and high-performance Laravel applications. Bridging technical complexity with elegant user experiences.
+                </p>
+<div class="flex flex-col sm:flex-row gap-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-electric-blue">terminal</span>
+<span class="font-label-mono text-lg text-on-surface typing-container" id="typing-text"></span>
+</div>
+</div>
+<div class="flex items-center gap-6 pt-4">
+<button class="px-8 py-4 rounded-full bg-gradient-to-r from-electric-blue to-hyper-purple text-on-primary font-label-mono font-bold tracking-widest hover:shadow-[0_0_30px_rgba(0,223,216,0.3)] transition-all">START PROJECT</button>
+<button class="px-8 py-4 rounded-full border border-white/10 hover:border-white/20 font-label-mono tracking-widest transition-all">VIEW WORK</button>
+</div>
+</div>
+<!-- Right Side: Terminal / UI -->
+<div class="relative lg:block hidden">
+<!-- Terminal Window -->
+<div class="glass-card rounded-xl overflow-hidden shadow-2xl translate-x-4 translate-y-4">
+<div class="bg-white/5 px-4 py-2 flex items-center gap-2 border-b border-white/5">
+<div class="flex gap-1.5">
+<div class="w-3 h-3 rounded-full bg-error/40"></div>
+<div class="w-3 h-3 rounded-full bg-yellow-400/40"></div>
+<div class="w-3 h-3 rounded-full bg-electric-blue/40"></div>
+</div>
+<span class="mx-auto font-label-mono text-[10px] text-white/40">deploy_erp_v2.0.sh</span>
+</div>
+<div class="p-6 font-label-mono text-sm space-y-2">
+<div class="flex gap-2">
+<span class="text-electric-blue">$</span>
+<span>composer install --optimize-autoloader</span>
+</div>
+<div class="text-white/40">Installing laravel/framework (v10.x)...</div>
+<div class="flex gap-2">
+<span class="text-electric-blue">$</span>
+<span>php artisan migrate --force</span>
+</div>
+<div class="text-primary/60">Migrating: 2024_03_15_create_enterprise_nodes_table</div>
+<div class="text-primary/60">Migrated:  2024_03_15_create_enterprise_nodes_table</div>
+<div class="flex gap-2 text-green-400">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+<span>Production deployment successful.</span>
+</div>
+</div>
+</div>
+<!-- Floating Cards -->
+<div class="absolute -top-10 -right-4 glass-card p-4 rounded-lg w-48 animate-bounce transition-all" style="animation-duration: 4s;">
+<div class="flex justify-between items-center mb-2">
+<span class="text-[10px] font-label-mono text-white/40 uppercase">Load Balance</span>
+<span class="text-electric-blue text-[10px] font-bold">98.2%</span>
+</div>
+<div class="h-1 bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-electric-blue w-[98%]"></div>
+</div>
+</div>
+<div class="absolute bottom-10 -left-10 glass-card p-4 rounded-lg w-56 transform -rotate-3 hover:rotate-0 transition-transform">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-hyper-purple/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-hyper-purple text-sm">database</span>
+</div>
+<div>
+<div class="text-[10px] font-label-mono text-white/40">Query Performance</div>
+<div class="text-xs font-bold">0.42ms Average</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- About Section with Stats -->
+<section class="py-section-gap-desktop bg-bg-obsidian relative overflow-hidden">
+<div class="container mx-auto px-6">
+<div class="max-w-4xl mx-auto text-center mb-20">
+<h2 class="font-headline-lg text-headline-lg mb-6">Built for Reliability</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Over two years of engineering complex business logic and scalable database architectures for rapidly growing Vietnamese enterprises.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="glass-card p-10 rounded-2xl text-center group">
+<div class="text-display-xl-mobile font-bold text-electric-blue mb-2 counter" data-target="2">0</div>
+<div class="font-label-mono text-on-surface-variant uppercase tracking-widest">Years Experience</div>
+<div class="mt-4 h-1 w-0 group-hover:w-full bg-electric-blue transition-all duration-500 mx-auto rounded-full"></div>
+</div>
+<div class="glass-card p-10 rounded-2xl text-center group">
+<div class="text-display-xl-mobile font-bold text-hyper-purple mb-2 counter" data-target="21">0</div>
+<div class="font-label-mono text-on-surface-variant uppercase tracking-widest">Global Branches Managed</div>
+<div class="mt-4 h-1 w-0 group-hover:w-full bg-hyper-purple transition-all duration-500 mx-auto rounded-full"></div>
+</div>
+<div class="glass-card p-10 rounded-2xl text-center group">
+<div class="text-display-xl-mobile font-bold text-white mb-2 counter" data-target="50">0</div>
+<div class="font-label-mono text-on-surface-variant uppercase tracking-widest">ERP Modules Deployed</div>
+<div class="mt-4 h-1 w-0 group-hover:w-full bg-white transition-all duration-500 mx-auto rounded-full"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Experience Section (Interactive Timeline) -->
+<section class="py-section-gap-desktop relative" id="experience">
+<div class="container mx-auto px-6">
+<div class="flex items-center gap-4 mb-16">
+<div class="h-px flex-1 bg-border-muted"></div>
+<h2 class="font-headline-lg text-headline-lg shrink-0 uppercase tracking-tighter">Experience</h2>
+<div class="h-px flex-1 bg-border-muted"></div>
+</div>
+<div class="max-w-4xl mx-auto relative pl-12 md:pl-20">
+<div class="absolute left-[21px] md:left-[29px] top-0 bottom-0 w-[2px] timeline-line"></div>
+<!-- Current Job -->
+<div class="mb-20 relative">
+<div class="absolute -left-[32px] md:-left-[40px] top-0 w-6 h-6 rounded-full bg-bg-obsidian border-2 border-electric-blue z-10 flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-electric-blue animate-ping"></div>
+</div>
+<div class="glass-card p-8 rounded-2xl">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+<div>
+<h3 class="font-headline-md text-headline-md text-electric-blue">Backend &amp; Laravel Engineer</h3>
+<p class="font-label-mono text-on-surface-variant">Tedfast Technology Co., Ltd</p>
+</div>
+<span class="px-4 py-1 rounded-full border border-electric-blue/20 bg-electric-blue/5 text-electric-blue font-label-mono text-xs">2023 — PRESENT</span>
+</div>
+<ul class="space-y-4 text-on-surface-variant font-body-md">
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-sm text-electric-blue mt-1">arrow_forward</span>
+                                Leading the development of a multi-branch ERP system controlling logistics and operations for 20+ nationwide nodes.
+                            </li>
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-sm text-electric-blue mt-1">arrow_forward</span>
+                                Architected a real-time tracking engine using WebSockets and Redis, reducing latency by 45% for mission-critical updates.
+                            </li>
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-sm text-electric-blue mt-1">arrow_forward</span>
+                                Optimizing heavy MySQL queries and indexing strategies for tables exceeding 1M+ operational records.
+                            </li>
+</ul>
+</div>
+</div>
+<!-- Freelance / Other -->
+<div class="relative">
+<div class="absolute -left-[32px] md:-left-[40px] top-0 w-6 h-6 rounded-full bg-bg-obsidian border-2 border-white/20 z-10"></div>
+<div class="glass-card p-8 rounded-2xl opacity-80 hover:opacity-100 transition-opacity">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+<div>
+<h3 class="font-headline-md text-headline-md">Fullstack Web Developer</h3>
+<p class="font-label-mono text-on-surface-variant">Independent Contractor</p>
+</div>
+<span class="px-4 py-1 rounded-full border border-white/10 text-white/40 font-label-mono text-xs">2022 — 2023</span>
+</div>
+<p class="text-on-surface-variant font-body-md">
+                            Developed bespoke CMS solutions and e-commerce engines for local startups, focusing on SEO performance and core web vitals.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Tech Stack (Tilt Cards) -->
+<section class="py-section-gap-desktop bg-surface-container-lowest/50" id="stack">
+<div class="container mx-auto px-6">
+<h2 class="font-headline-lg text-headline-lg text-center mb-20">Production-Ready Stack</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Frontend -->
+<div class="tilt-card glass-card p-8 rounded-2xl" onmouseleave="resetTilt(this)" onmousemove="handleTilt(event, this)">
+<span class="material-symbols-outlined text-4xl text-electric-blue mb-4">window</span>
+<h3 class="font-headline-md text-xl mb-4">Frontend</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 rounded-md bg-white/5 border border-white/5 font-label-mono text-[10px] uppercase">Tailwind CSS</span>
+<span class="px-3 py-1 rounded-md bg-white/5 border border-white/5 font-label-mono text-[10px] uppercase">Alpine.js</span>
+<span class="px-3 py-1 rounded-md bg-white/5 border border-white/5 font-label-mono text-[10px] uppercase">Vite</span>
+<span class="px-3 py-1 rounded-md bg-white/5 border border-white/5 font-label-mono text-[10px] uppercase">React</span>
+</div>
+</div>
+<!-- Backend -->
+<div class="tilt-card glass-card p-8 rounded-2xl" onmouseleave="resetTilt(this)" onmousemove="handleTilt(event, this)">
+<span class="material-symbols-outlined text-4xl text-hyper-purple mb-4">terminal</span>
+<h3 class="font-headline-md text-xl mb-4">Backend</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 rounded-md bg-white/5 border border-white/5 font-label-mono text-[10px] uppercase">Laravel 10.x</span>
+<span class="px-3 py-1 rounded-md bg-white/5 border border-white/5 font-label-mono text-[10px] uppercase">PHP 8.2</span>
+<span class="px-3 py-1 rounded-md bg-white/5 border border-white/5 font-label-mono text-[10px] uppercase">Node.js</span>
+<span class="px-3 py-1 rounded-md bg-white/5 border border-white/5 font-label-mono text-[10px] uppercase">REST API</span>
+</div>
+</div>
+<!-- Database -->
+<div class="tilt-card glass-card p-8 rounded-2xl" onmouseleave="resetTilt(this)" onmousemove="handleTilt(event, this)">
+<span class="material-symbols-outlined text-4xl text-yellow-400 mb-4">database</span>
+<h3 class="font-headline-md text-xl mb-4">Data</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 rounded-md bg-white/5 border border-white/5 font-label-mono text-[10px] uppercase">MySQL</span>
+<span class="px-3 py-1 rounded-md bg-white/5 border border-white/5 font-label-mono text-[10px] uppercase">Redis</span>
+<span class="px-3 py-1 rounded-md bg-white/5 border border-white/5 font-label-mono text-[10px] uppercase">PostgreSQL</span>
+<span class="px-3 py-1 rounded-md bg-white/5 border border-white/5 font-label-mono text-[10px] uppercase">Eloquent</span>
+</div>
+</div>
+<!-- Workflow -->
+<div class="tilt-card glass-card p-8 rounded-2xl" onmouseleave="resetTilt(this)" onmousemove="handleTilt(event, this)">
+<span class="material-symbols-outlined text-4xl text-green-400 mb-4">deployed_code</span>
+<h3 class="font-headline-md text-xl mb-4">DevOps</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 rounded-md bg-white/5 border border-white/5 font-label-mono text-[10px] uppercase">Docker</span>
+<span class="px-3 py-1 rounded-md bg-white/5 border border-white/5 font-label-mono text-[10px] uppercase">Git/Github</span>
+<span class="px-3 py-1 rounded-md bg-white/5 border border-white/5 font-label-mono text-[10px] uppercase">Forge</span>
+<span class="px-3 py-1 rounded-md bg-white/5 border border-white/5 font-label-mono text-[10px] uppercase">AWS</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Projects Section -->
+<section class="py-section-gap-desktop overflow-hidden" id="projects">
+<div class="container mx-auto px-6">
+<div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+<div class="max-w-2xl">
+<h2 class="font-headline-lg text-headline-lg mb-6 leading-tight">SOLVING BUSINESS <br/>PUZZLES THROUGH CODE</h2>
+<p class="font-body-lg text-on-surface-variant">Focusing on high-availability systems that transform internal operations from chaotic spreadsheets to streamlined digital workflows.</p>
+</div>
+<div class="font-label-mono text-label-mono text-white/20 uppercase tracking-[0.2em] [writing-mode:vertical-lr] hidden lg:block">Featured Works</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+<!-- Project 1 -->
+<div class="group relative glass-card rounded-3xl overflow-hidden">
+<div class="h-[400px] overflow-hidden relative">
+<div class="absolute inset-0 bg-gradient-to-t from-bg-obsidian via-transparent to-transparent z-10"></div>
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A clean, minimalist enterprise dashboard interface with dark mode aesthetics. The screen shows complex data visualizations, real-time logistics tracking charts, and a navigation sidebar. The lighting is focused and professional, with electric blue highlights reflecting the high-performance SaaS vibe of the portfolio. The overall look is sleek, modern, and production-ready." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmCwoBhTMZbAZjfT9w6PkXrWWXi__JwHbjQTk3HCeEeFERliVsafV6K1ETu25jqxlnMJe7gl85oQWdtuLFuVL3fSyG9Vv9JPHbHqeMWmkvjnG2AWs_pKU3w5jPeucYOn9Bj3qou9RsKG1k56_BxdBwD5AHPs08BWZyH2EgOxXi4GDBBF-0lwZ7kng4v85ZA4LkmspGHrIanOyHsgU2qBeATcQRW8XJdeLF82DHD93BpI2CCE3X8SX92Ss861_pmGEkXEohHZXqvwCK"/>
+<div class="absolute top-6 left-6 z-20 flex gap-2">
+<span class="bg-electric-blue/20 backdrop-blur-md text-electric-blue border border-electric-blue/30 px-3 py-1 rounded-full text-[10px] font-label-mono uppercase">Live Production</span>
+<span class="bg-white/10 backdrop-blur-md text-white border border-white/20 px-3 py-1 rounded-full text-[10px] font-label-mono uppercase">ERP</span>
+</div>
+</div>
+<div class="p-8">
+<h3 class="font-headline-md text-2xl mb-2">Nexus Enterprise ERP</h3>
+<p class="text-on-surface-variant font-body-md mb-8">A comprehensive supply chain management system for 21 logistics nodes. Featuring real-time inventory sync, automated manifesting, and role-based access control.</p>
+<div class="flex items-center justify-between border-t border-white/5 pt-6">
+<div class="flex gap-4">
+<span class="font-label-mono text-xs text-white/40">PHP/Laravel</span>
+<span class="font-label-mono text-xs text-white/40">MySQL</span>
+<span class="font-label-mono text-xs text-white/40">Redis</span>
+</div>
+<button class="material-symbols-outlined hover:text-electric-blue transition-colors">arrow_outward</button>
+</div>
+</div>
+</div>
+<!-- Project 2 -->
+<div class="group relative glass-card rounded-3xl overflow-hidden lg:mt-20">
+<div class="h-[400px] overflow-hidden relative">
+<div class="absolute inset-0 bg-gradient-to-t from-bg-obsidian via-transparent to-transparent z-10"></div>
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="An advanced AI-powered content management system interface displayed on a modern 4K monitor. The UI features a clean, white and purple accented theme with floating windows and real-time translation progress bars. High-end lighting creates soft shadows and a professional depth, mirroring the Stripe-inspired minimalism and technical precision of the portfolio." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBij2IaSVYQfsy4PqJqgcw2_WECdAxCKxHmeb6myPva2NOmxLKeAyhFv8Y6g9bjP47a3b3eOyzcj5LGOOn0LtzePd5aJhvxLNTFXErkjWLMq1FDkUmuQtxLeJ9PmT9PYgzowG3q-N4cMEc0c0yWqLRJffaoUJL-r-xJ7lhBami1SSuv52-4Qz3oRGhhZ5zY0LtYgyjSFndC6EQDCw-9v81AlkekkI2vc7fyyQZjeY3HRaC8AhqgN2DbrllOtLTbnnxYMUZffbwZQqLc"/>
+<div class="absolute top-6 left-6 z-20 flex gap-2">
+<span class="bg-hyper-purple/20 backdrop-blur-md text-hyper-purple border border-hyper-purple/30 px-3 py-1 rounded-full text-[10px] font-label-mono uppercase">Open Source</span>
+<span class="bg-white/10 backdrop-blur-md text-white border border-white/20 px-3 py-1 rounded-full text-[10px] font-label-mono uppercase">AI CMS</span>
+</div>
+</div>
+<div class="p-8">
+<h3 class="font-headline-md text-2xl mb-2">Linguist AI CMS</h3>
+<p class="text-on-surface-variant font-body-md mb-8">A multi-tenant headless CMS that uses OpenAI to automatically localize and translate landing pages across 12 languages instantly.</p>
+<div class="flex items-center justify-between border-t border-white/5 pt-6">
+<div class="flex gap-4">
+<span class="font-label-mono text-xs text-white/40">Node.js</span>
+<span class="font-label-mono text-xs text-white/40">Next.js</span>
+<span class="font-label-mono text-xs text-white/40">Python</span>
+</div>
+<button class="material-symbols-outlined hover:text-hyper-purple transition-colors">arrow_outward</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact CTA -->
+<section class="py-section-gap-desktop" id="contact">
+<div class="container mx-auto px-6">
+<div class="glass-card rounded-[40px] p-12 md:p-20 relative overflow-hidden text-center">
+<div class="absolute top-0 right-0 w-[500px] h-[500px] bg-electric-blue/10 blur-[100px] rounded-full -translate-y-1/2 translate-x-1/2"></div>
+<h2 class="font-display-xl-mobile md:text-display-xl font-bold mb-8 relative z-10">Let's build something <br/><span class="text-electric-blue">scaleable</span>.</h2>
+<p class="font-body-lg text-on-surface-variant max-w-2xl mx-auto mb-12 relative z-10">Looking for a technical partner to help build or scale your next enterprise platform? I'm currently open to new collaborations.</p>
+<div class="flex flex-col sm:flex-row justify-center items-center gap-6 relative z-10">
+<a class="w-full sm:w-auto px-10 py-5 bg-white text-bg-obsidian font-bold rounded-full font-label-mono hover:bg-electric-blue transition-colors duration-300" href="mailto:contact@nhuttan.dev">GET IN TOUCH</a>
+<div class="flex items-center gap-6">
+<a class="text-on-surface-variant hover:text-white transition-colors" href="#">Github</a>
+<a class="text-on-surface-variant hover:text-white transition-colors" href="#">LinkedIn</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-bg-obsidian border-t border-border-muted py-16 px-gutter">
+<div class="flex flex-col md:flex-row justify-between items-center gap-stack-lg max-w-7xl mx-auto w-full">
+<div class="flex flex-col items-center md:items-start">
+<span class="font-headline-lg text-headline-lg text-on-surface mb-2">Duong Nhut Tan</span>
+<p class="font-label-mono text-label-mono uppercase tracking-widest text-outline-variant">Fullstack ERP Specialist</p>
+</div>
+<div class="flex gap-8">
+<a class="font-label-mono text-label-mono uppercase tracking-widest text-outline-variant hover:text-electric-blue transition-all" href="#">GitHub</a>
+<a class="font-label-mono text-label-mono uppercase tracking-widest text-outline-variant hover:text-electric-blue transition-all" href="#">LinkedIn</a>
+<a class="font-label-mono text-label-mono uppercase tracking-widest text-outline-variant hover:text-electric-blue transition-all" href="#">Twitter</a>
+<a class="font-label-mono text-label-mono uppercase tracking-widest text-outline-variant hover:text-electric-blue transition-all" href="#">Resume</a>
+</div>
+<div class="text-center md:text-right">
+<p class="font-label-mono text-label-mono uppercase tracking-widest text-outline-variant">© 2024 Built for Performance</p>
+<p class="text-[10px] font-label-mono text-white/10 mt-1">Nexus Terminal v2.0</p>
+</div>
+</div>
+</footer>
+<script>
+        // Cursor Glow
+        const glow = document.getElementById('cursor-glow');
+        document.addEventListener('mousemove', (e) => {
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
+        });
+
+        // Typing Animation
+        const roles = ['Laravel Engineer', 'ERP Builder', 'Database Optimizer', 'System Architect'];
+        let roleIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typingText = document.getElementById('typing-text');
+
+        function type() {
+            const currentRole = roles[roleIndex];
+            if (isDeleting) {
+                typingText.textContent = currentRole.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingText.textContent = currentRole.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            if (!isDeleting && charIndex === currentRole.length) {
+                isDeleting = true;
+                setTimeout(type, 2000);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                roleIndex = (roleIndex + 1) % roles.length;
+                setTimeout(type, 500);
+            } else {
+                setTimeout(type, isDeleting ? 50 : 150);
+            }
+        }
+        type();
+
+        // Stats Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        const observerOptions = { threshold: 0.5 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = +entry.target.getAttribute('data-target');
+                    const count = +entry.target.innerText;
+                    const speed = 200 / target;
+                    
+                    const updateCount = () => {
+                        const current = +entry.target.innerText;
+                        if (current < target) {
+                            entry.target.innerText = current + 1;
+                            setTimeout(updateCount, speed);
+                        } else {
+                            entry.target.innerText = target + (target > 20 ? '+' : '');
+                        }
+                    }
+                    updateCount();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        counters.forEach(counter => observer.observe(counter));
+
+        // Tilt Card Interaction
+        function handleTilt(e, card) {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = (y - centerY) / 10;
+            const rotateY = (centerX - x) / 10;
+            
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+        }
+
+        function resetTilt(card) {
+            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+        }
+
+        // Active Nav State Logic
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('text-electric-blue', 'border-b-2', 'border-electric-blue', 'pb-1');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('text-electric-blue', 'border-b-2', 'border-electric-blue', 'pb-1');
+                }
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Base ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: #020203;
+  color: #e5e2e3;
+  font-family: var(--font-inter, "Inter", system-ui, sans-serif);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  cursor: default;
+}
+
+/* ─── Selection ─────────────────────────────────────── */
+::selection { background: #00DFD8; color: #020203; }
+
+/* ─── Scrollbar ─────────────────────────────────────── */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: #020203; }
+::-webkit-scrollbar-thumb { background: rgba(0,223,216,0.3); border-radius: 2px; }
+
+/* ─── Cursor Glow — managed entirely via JS inline styles ── */
+
+/* ─── Animated Grid ─────────────────────────────────── */
+.animated-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* ─── Glass Card ─────────────────────────────────────── */
+.glass-card {
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+.glass-card:hover {
+  border-color: rgba(0,223,216,0.3);
+  box-shadow: 0 0 40px rgba(0,223,216,0.08);
+}
+
+/* ─── Timeline ───────────────────────────────────────── */
+.timeline-line {
+  background: linear-gradient(to bottom, transparent, #00DFD8, #BD00FF, transparent);
+}
+
+/* ─── Gradient Text ─────────────────────────────────── */
+.gradient-text-hero {
+  background: linear-gradient(90deg, #00DFD8, #BD00FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Typing Cursor ─────────────────────────────────── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.typing-cursor { animation: blink 0.8s step-end infinite; }
+
+/* Inline cursor after typing text — mirrors code.html ::after approach */
+.typing-container::after {
+  content: "|";
+  margin-left: 2px;
+  color: #00DFD8;
+  animation: blink 0.8s step-end infinite;
+}
+
+/* ─── Tilt card ─────────────────────────────────────── */
+.tilt-card { transform-style: preserve-3d; perspective: 1000px; }
+
+/* ─── Hero Glow ─────────────────────────────────────── */
+.hero-glow { filter: blur(120px); opacity: 0.15; }
+
+/* ─── Floating Animation ───────────────────────────── */
+@keyframes floatCard {
+  0%,100% { transform: translateY(0px); }
+  50%      { transform: translateY(-10px); }
+}
+/* 'bounce' alias used by Hero.tsx inline style={{ animation: "bounce 4s..." }} */
+@keyframes bounce {
+  0%,100% { transform: translateY(0px); }
+  50%      { transform: translateY(-10px); }
+}
+.float-card { animation: floatCard 4s ease-in-out infinite; }
+.float-card-slow { animation: floatCard 6s ease-in-out infinite; }
+
+/* ─── Font Mono Utility ─────────────────────────────── */
+.font-mono-label {
+  font-family: var(--font-jetbrains, "JetBrains Mono", monospace);
+  letter-spacing: 0.05em;
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 500;
+}
+
+/* ─── Hover underline bar ───────────────────────────── */
+.hover-underbar {
+  height: 4px;
+  width: 0;
+  transition: width 0.5s ease;
+  border-radius: 9999px;
+}
+.group:hover .hover-underbar { width: 100%; }
