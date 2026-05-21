@@ -66,7 +66,7 @@ export default function ElectricMonster() {
         this.nextPos.y = this.pos.y + this.l * Math.sin(this.ang);
       }
 
-      show() { ctx.lineTo(this.nextPos.x, this.nextPos.y); }
+      show() { ctx!.lineTo(this.nextPos.x, this.nextPos.y); }
     }
 
     // ── Tentacle — chain of segments anchored at (x, y)
