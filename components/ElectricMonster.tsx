@@ -2,12 +2,6 @@
 
 import { useEffect, useRef } from "react";
 
-// ─────────────────────────────────────────────────────────
-// Faithful TypeScript port of Electric-Monster/js.js
-// Canvas fills the parent section; mouse is tracked on the
-// section element so the canvas can stay pointer-events-none.
-// ─────────────────────────────────────────────────────────
-
 interface Point { x: number; y: number; }
 
 export default function ElectricMonster() {
@@ -16,22 +10,22 @@ export default function ElectricMonster() {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
 
-    // Size canvas to the hero section (its CSS parent)
+    // Narrow ctx to non-null so TypeScript doesn't complain inside class bodies
+    const ctxMaybe = canvas.getContext("2d");
+    if (!ctxMaybe) return;
+    const ctx: CanvasRenderingContext2D = ctxMaybe;
+
     const section = canvas.parentElement!;
     let w = (canvas.width  = section.offsetWidth);
     let h = (canvas.height = section.offsetHeight);
 
-    // ── Mouse state (false = no mouse yet → use lemniscate path)
     const mouse: { x: number | false; y: number | false } = { x: false, y: false };
 
     function dist(p1x: number, p1y: number, p2x: number, p2y: number) {
       return Math.sqrt((p2x - p1x) ** 2 + (p2y - p1y) ** 2);
     }
 
-    // ── Segment — one link in a tentacle chain
     class Segment {
       pos: Point;
       nextPos: Point;
@@ -52,24 +46,23 @@ export default function ElectricMonster() {
       }
 
       update(t: Point) {
-        this.ang      = Math.atan2(t.y - this.pos.y, t.x - this.pos.x);
-        this.pos.x    = t.x + this.l * Math.cos(this.ang - Math.PI);
-        this.pos.y    = t.y + this.l * Math.sin(this.ang - Math.PI);
+        this.ang       = Math.atan2(t.y - this.pos.y, t.x - this.pos.x);
+        this.pos.x     = t.x + this.l * Math.cos(this.ang - Math.PI);
+        this.pos.y     = t.y + this.l * Math.sin(this.ang - Math.PI);
         this.nextPos.x = this.pos.x + this.l * Math.cos(this.ang);
         this.nextPos.y = this.pos.y + this.l * Math.sin(this.ang);
       }
 
       fallback(t: Point) {
-        this.pos.x    = t.x;
-        this.pos.y    = t.y;
+        this.pos.x     = t.x;
+        this.pos.y     = t.y;
         this.nextPos.x = this.pos.x + this.l * Math.cos(this.ang);
         this.nextPos.y = this.pos.y + this.l * Math.sin(this.ang);
       }
 
-      show() { ctx!.lineTo(this.nextPos.x, this.nextPos.y); }
+      show() { ctx.lineTo(this.nextPos.x, this.nextPos.y); }
     }
 
-    // ── Tentacle — chain of segments anchored at (x, y)
     class Tentacle {
       x: number; y: number; l: number; n: number;
       rand: number;
@@ -132,7 +125,6 @@ export default function ElectricMonster() {
       }
     }
 
-    // ── Spawn tentacles (same params as original)
     const maxl = 300, minl = 50, n = 30, numt = 500;
     const tent: Tentacle[] = [];
     for (let i = 0; i < numt; i++) {
@@ -145,7 +137,6 @@ export default function ElectricMonster() {
       ));
     }
 
-    // ── Target follows mouse; lemniscate of Bernoulli when idle
     const target: Point & { errx: number; erry: number } =
       { x: w / 2, y: h / 2, errx: 0, erry: 0 };
     const last_target: Point = { x: w / 2, y: h / 2 };
@@ -168,7 +159,6 @@ export default function ElectricMonster() {
       target.y += target.erry / 10;
       t += 0.01;
 
-      // Draw glowing head
       ctx.beginPath();
       ctx.arc(
         target.x, target.y,
@@ -192,7 +182,6 @@ export default function ElectricMonster() {
       draw();
     }
 
-    // Track mouse on parent section (canvas is pointer-events-none)
     const onMouseMove = (e: MouseEvent) => {
       const rect = canvas.getBoundingClientRect();
       mouse.x = e.clientX - rect.left;
