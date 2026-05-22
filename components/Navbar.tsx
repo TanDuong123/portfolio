@@ -72,7 +72,7 @@ export default function Navbar() {
           </a>
 
           {/* Desktop links */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-8">
             {links.map((l) => {
               const isActive = active === l.href.slice(1);
               const isHovered = hoveredLink === l.href;
@@ -85,10 +85,10 @@ export default function Navbar() {
                   onMouseLeave={() => setHoveredLink(null)}
                   whileHover={{ y: -1 }}
                   transition={{ duration: 0.15 }}
+                  className="text-[11px] lg:text-[13px] xl:text-[14px]"
                   style={{
                     fontFamily: "'JetBrains Mono', monospace",
-                    fontSize: "14px",
-                    letterSpacing: "0.05em",
+                    letterSpacing: "0.04em",
                     fontWeight: 500,
                     textTransform: "uppercase",
                     color: lit ? "#00DFD8" : "rgba(193,198,215,0.7)",
@@ -104,24 +104,24 @@ export default function Navbar() {
           </div>
 
           {/* Right side */}
-          <div className="flex items-center gap-4">
-            <div className="hidden sm:flex gap-2">
+          <div className="flex items-center gap-2 lg:gap-4">
+            <div className="hidden xl:flex gap-2">
               <span className="material-symbols-outlined text-[#414754] hover:text-[#00DFD8] cursor-pointer transition-colors duration-300 text-[20px]">code</span>
               <span className="material-symbols-outlined text-[#414754] hover:text-[#00DFD8] cursor-pointer transition-colors duration-300 text-[20px]">terminal</span>
             </div>
             <motion.a
               href="/files/DuongNhutTan_Fullstack_Developer.pdf"
               download
-              className="bg-[#0070f3] text-white px-6 py-2 rounded-full font-bold tracking-widest uppercase hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg shadow-[rgba(0,112,243,0.2)]"
+              className="bg-[#0070f3] text-white px-4 py-1.5 lg:px-6 lg:py-2 rounded-full font-bold tracking-widest uppercase transition-all duration-300 shadow-lg shadow-[rgba(0,112,243,0.2)]"
               style={{
                 fontFamily: "'JetBrains Mono', monospace",
-                fontSize: "13px",
-                letterSpacing: "0.08em",
+                fontSize: "11px",
+                letterSpacing: "0.06em",
               }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Download CV
+              <span className="hidden lg:inline">Download </span>CV
             </motion.a>
 
             {/* Mobile hamburger */}
