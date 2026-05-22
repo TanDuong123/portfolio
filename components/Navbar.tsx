@@ -110,7 +110,7 @@ export default function Navbar() {
               <span className="material-symbols-outlined text-[#414754] hover:text-[#00DFD8] cursor-pointer transition-colors duration-300 text-[20px]">terminal</span>
             </div>
             <motion.a
-              href="/DuongNhutTan_Fullstack_Developer.pdf"
+              href="/files/DuongNhutTan_Fullstack_Developer.pdf"
               download
               className="bg-[#0070f3] text-white px-6 py-2 rounded-full font-bold tracking-widest uppercase hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg shadow-[rgba(0,112,243,0.2)]"
               style={{

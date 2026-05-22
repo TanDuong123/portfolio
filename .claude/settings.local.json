@@ -22,7 +22,9 @@
       "PowerShell($env:PATH = \"C:\\\\nvm4w\\\\nodejs;\" + $env:PATH; Set-Location \"d:\\\\project\\\\portfolio\"; Start-Process -NoNewWindow -FilePath \"npm\" -ArgumentList \"run dev\"; Start-Sleep -Seconds 6; Write-Host \"Dev server restarted\")",
       "PowerShell(Get-Process -Name \"node\" -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue; Start-Sleep -Seconds 2; $env:PATH = \"C:\\\\nvm4w\\\\nodejs;\" + $env:PATH; Set-Location \"d:\\\\project\\\\portfolio\"; npm run build 2>&1)",
       "PowerShell($env:PATH = \"C:\\\\nvm4w\\\\nodejs;\" + $env:PATH; Set-Location \"d:\\\\project\\\\portfolio\"; Start-Process -NoNewWindow -FilePath \"npm\" -ArgumentList \"run dev\"; Start-Sleep -Seconds 7; Write-Host \"Ready\")",
-      "PowerShell(Get-Process -Name \"node\" -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue; Start-Sleep -Seconds 1; $env:PATH = \"C:\\\\nvm4w\\\\nodejs;\" + $env:PATH; Set-Location \"d:\\\\project\\\\portfolio\"; Start-Process -NoNewWindow -FilePath \"npm\" -ArgumentList \"run dev\"; Start-Sleep -Seconds 6; Write-Host \"Ready\")"
+      "PowerShell(Get-Process -Name \"node\" -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue; Start-Sleep -Seconds 1; $env:PATH = \"C:\\\\nvm4w\\\\nodejs;\" + $env:PATH; Set-Location \"d:\\\\project\\\\portfolio\"; Start-Process -NoNewWindow -FilePath \"npm\" -ArgumentList \"run dev\"; Start-Sleep -Seconds 6; Write-Host \"Ready\")",
+      "PowerShell(Get-Process -Id 15164 -ErrorAction SilentlyContinue)",
+      "PowerShell(Stop-Process -Id 15164 -Force -ErrorAction SilentlyContinue)"
     ]
   }
 }

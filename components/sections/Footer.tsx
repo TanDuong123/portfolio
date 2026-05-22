@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 const LINKS = [
   { label: "GitHub",   href: "https://github.com/TanDuong123" },
   { label: "LinkedIn", href: "https://linkedin.com/in/tanduong" },
-  { label: "Resume",   href: "/DuongNhutTan_Fullstack_Developer.pdf" },
+  { label: "Resume",   href: "/files/DuongNhutTan_Fullstack_Developer.pdf" },
 ];
 
 export default function Footer() {

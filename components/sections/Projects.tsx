@@ -1,10 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { staggerContainer, fadeUp, viewportSettings } from "@/lib/animations";
 
-// ── Project mockup images (CSS art) ────────────────────
 function ERPMockup() {
   return (
     <div className="w-full h-full bg-gradient-to-br from-[#0a1628] to-[#061020] flex flex-col p-5 gap-3 font-mono text-[11px]">
@@ -110,7 +110,17 @@ function CMSMockup() {
   );
 }
 
-const PROJECTS = [
+type Project = {
+  title: string; subtitle: string; description: string;
+  tags: string[];
+  badges: { label: string; bg: string; border: string; color: string }[];
+  arrowColor: string; link: string;
+  image?: string;
+  Mockup: () => React.JSX.Element;
+  offset: boolean;
+};
+
+const PROJECTS: Project[] = [
   {
     title: "Enterprise Education Management ERP",
     subtitle: "edfast.vn",
@@ -123,6 +133,7 @@ const PROJECTS = [
     ],
     arrowColor: "#00DFD8",
     link: "https://edfast.vn",
+    image: "/images/project3.png",
     Mockup: ERPMockup,
     offset: false,
   },
@@ -138,6 +149,7 @@ const PROJECTS = [
     ],
     arrowColor: "#BD00FF",
     link: "https://livetocode.io.vn",
+    image: "/images/project2.png",
     Mockup: CMSMockup,
     offset: true,
   },
@@ -187,22 +199,33 @@ export default function Projects() {
         {/* Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           {PROJECTS.map((p, i) => (
-            <motion.div
+            <motion.a
               key={i}
+              href={p.link}
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewportSettings}
               transition={{ duration: 0.7, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] }}
-              className={`group relative glass-card rounded-3xl overflow-hidden ${p.offset ? "lg:mt-20" : ""}`}
+              className={`group relative glass-card rounded-3xl overflow-hidden cursor-pointer block ${p.offset ? "lg:mt-20" : ""}`}
             >
               {/* Image / Mockup */}
               <div className="h-[240px] sm:h-[320px] md:h-[400px] overflow-hidden relative">
-                {/* Gradient overlay */}
+                {/* Gradient bottom — fades image into card content */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#020203] via-transparent to-transparent z-10 pointer-events-none" />
-
-                {/* Mockup */}
+                {/* Mockup or real image */}
                 <div className="w-full h-full group-hover:scale-[1.03] transition-transform duration-700">
-                  <p.Mockup />
+                  {p.image ? (
+                    <Image
+                      src={p.image}
+                      alt={p.title}
+                      fill
+                      className="object-cover object-top"
+                    />
+                  ) : (
+                    <p.Mockup />
+                  )}
                 </div>
 
                 {/* Badges */}
@@ -210,9 +233,9 @@ export default function Projects() {
                   {p.badges.map((b, j) => (
                     <span
                       key={j}
-                      className="backdrop-blur-md px-3 py-1 rounded-full text-[10px] uppercase"
+                      className="backdrop-blur-xl px-3 py-1 rounded-full text-[10px] uppercase font-semibold"
                       style={{
-                        background: b.bg,
+                        background: "rgba(2,2,3,0.72)",
                         border: `1px solid ${b.border}`,
                         color: b.color,
                         fontFamily: "'JetBrains Mono', monospace",
@@ -261,20 +284,10 @@ export default function Projects() {
                       </span>
                     ))}
                   </div>
-                  <a
-                    href={p.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="transition-colors duration-300 hover:scale-110 active:scale-95 flex-shrink-0 ml-4"
-                    style={{ color: "rgba(255,255,255,0.4)" }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = p.arrowColor)}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.4)")}
-                  >
-                    <ArrowUpRight size={22} />
-                  </a>
+                  <ArrowUpRight size={22} style={{ color: p.arrowColor }} className="flex-shrink-0 ml-4 opacity-70 group-hover:opacity-100 transition-opacity" />
                 </div>
               </div>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
       </div>
