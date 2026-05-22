@@ -83,7 +83,7 @@ export default function Contact() {
                   Github
                 </a>
                 <a
-                  href="https://linkedin.com/in/tanduong"
+                  href="https://linkedin.com/in/tan-duong302003/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[#c1c6d7] hover:text-white transition-colors duration-300"
